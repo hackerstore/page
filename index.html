@@ -12,7 +12,8 @@
         body {
           font-family: 'Poppins', sans-serif;
           margin: 0;
-          padding: 0;
+          padding: 7%;
+          overflow: hidden;
         }
         
         h5 {
@@ -128,18 +129,22 @@
     <img src="img.png" class="imag" style="width:260px; height: 120px;">
     <form>
       <div class="file-picker">
-        <label for="image"><i class="fa-light fa-file-arrow-up"></i> Choose image</label>
+        <label for="image"><i class="fa-light fa-file-arrow-up"></i> Choose Your image</label>
         <input type="file" id="image" accept="image/*">
       </div>
       
-      <button type="submit" id="submit" style="visibility: ;">Preview</button>
+      <button type="submit" id="submit" style="font-family: Poppins;" onclick="myFunction()">Load Your Image</button>
     </form>
-    <div id="preview"></div>
+    <div id="preview" style="visibility: hidden; height: 10px;"></div>
     <div class="download">
-    <button type="button" id="download" style="margin-bottom: 5%;">Download Image</button>
+    <button type="button" id="download" style="margin-bottom: 5%; font-family: Poppins;">Your Image is Ready. Download Image</button>
     
     </div>
-    
+    <script>
+      function myFunction() {
+        document.getElementById("submit").style.display = "block";
+      }
+      </script>
     <script type="text/javascript">
       const form = document.querySelector('form');
       const submitButton = document.querySelector('#submit');
@@ -147,8 +152,8 @@
       const downloadButton = document.querySelector('#download');
       const frameImage = new Image();
       frameImage.src = 'frame.png'; // replace with your custom frame image URL
-      const FRAME_WIDTH = 260;
-      const FRAME_HEIGHT = 260;
+      const FRAME_WIDTH = 1000;
+      const FRAME_HEIGHT = 1000;
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -187,12 +192,19 @@
       });
 
       function downloadCanvasAsImage(canvas) {
-        const dataURL = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.href = dataURL;
-        link.download = 'image-frame.png';
-        link.click();
-      }
+  const pixelRatio = window.devicePixelRatio || 1;
+  const newCanvas = document.createElement('canvas');
+  newCanvas.width = canvas.width * pixelRatio;
+  newCanvas.height = canvas.height * pixelRatio;
+  const context = newCanvas.getContext('2d');
+  context.scale(pixelRatio, pixelRatio);
+  context.drawImage(canvas, 0, 0);
+  
+  const link = document.createElement('a');
+  link.download = 'image-frame.jpg';
+  link.href = newCanvas.toDataURL('image/jpg');
+  link.click();
+}
     </script>
   </body>
 </html>
