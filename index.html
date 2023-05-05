@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Frame App</title>
+    <title>DNIC Sammelanam</title>
     <link rel="icon" type="image/x-icon" href="img3.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam&family=Poppins&display=swap" rel="stylesheet">
     <style type="text/css">
         body {
           font-family: 'Poppins', sans-serif;
@@ -127,24 +127,27 @@
   </head>
   <body>
     <img src="img2.png" class="imag" style="width:140px; height: 10px; padding-top: 5%; visibility: hidden;">
-    <p style="text-align: center; font-size: 13px; margin-bottom: 0px;"><b>Darunnajath Islamic Complex Vallapuzha</b></p>
+    <p style="text-align: center; font-size: 13px; margin-bottom: 0px; font-family: 'Noto Sans Malayalam', sans-serif;"><b>ദാറുന്നജാത്ത് ഇസ്ലാമിക്ക് കോംപ്ലക്സ് വല്ലപ്പുഴ</b></p>
     <img src="img.png" class="imag" style="width:260px; height: 120px;">
     <form>
-      <div class="file-picker">
-        <label for="image"><i class="fa-light fa-file-arrow-up"></i> Choose Your image</label>
+      <div class="file-picker" onclick="myFunction2()">
+        <label for="image"><i class="fa-light fa-file-arrow-up"></i> Choose Your image For your Profile</label>
         <input type="file" id="image" accept="image/*">
       </div>
       
-      <button type="submit" id="submit" style="font-family: Poppins;" onclick="myFunction()">Load Your Image</button>
+      <button type="submit" id="submit" style="font-family: Poppins; opacity: 0;" onclick="myFunction()">Generate Your Image</button>
     </form>
     <div id="preview" style="visibility: hidden; height: 10px;"></div>
     <div class="download">
-    <button type="button" id="download" style="margin-bottom: 5%; font-family: Poppins;">Your Image is Ready. Download Image</button>
+    <button type="button" id="download" style="margin-bottom: 5%; font-family: Poppins;">Your Profile Successfully Generated. Click Here to Download</button>
     
     </div>
     <script>
       function myFunction() {
-        document.getElementById("submit").style.display = "block";
+        document.getElementById("submit").style.opacity = "0";
+      }
+      function myFunction2() {
+        document.getElementById("submit").style.opacity = "1";
       }
       </script>
     <script type="text/javascript">
@@ -206,6 +209,7 @@
   link.download = 'image-frame.jpg';
   link.href = newCanvas.toDataURL('image/jpg');
   link.click();
+  setTimeout(function(){ window. location. reload(); }, 1000);
 }
     </script>
   </body>
