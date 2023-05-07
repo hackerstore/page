@@ -14,8 +14,8 @@
           font-family: 'Poppins', sans-serif;
           margin: 0;
           padding-left: 7%;
-          padding-right: 7%;
           text-align: center;
+          padding-right: 7%;
           overflow: hidden;
         }
         
@@ -41,6 +41,7 @@
         
         .file-picker {
   display: inline-block;
+  text-align: center;
   position: relative;
 }
 
@@ -142,7 +143,7 @@
     <div id="preview" style="visibility: hidden; height: 10px;"></div>
     <div class="download">
     <button type="button" id="download" style="margin-bottom: 5%; font-family: Poppins;">Your Profile Successfully Generated. Click Here to Download</button>
-    
+    <p style="font-size: 13px;">Developed By <a href="https://naz-devs.github.io/" style="text-decoration: none; color: #4caf50;"><b>Naz-Devs</b></a></p>
     </div>
     <script>
       function myFunction() {
@@ -208,7 +209,7 @@
   context.drawImage(canvas, 0, 0);
   
   const link = document.createElement('a');
-  link.download = 'profile.jpg';
+  link.download = 'image-frame.jpg';
   link.href = newCanvas.toDataURL('image/jpg');
   link.click();
   setTimeout(function(){ window. location. reload(); }, 1000);
